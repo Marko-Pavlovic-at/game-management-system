@@ -3,12 +3,13 @@
 > I'm your coach. You write the code; I explain, give tasks, and review.
 > Full curriculum lives in the approved learning plan. This file tracks where you are.
 
-**Current module:** Module 2 — State & Events (`useState`)
-**Current step:** 2.1 — Build a `SearchBar` with state (next session)
-**Status:** ⏸️ Paused — good stopping point
+**Current module:** Module 3 — Lists, Keys & Mock Data
+**Current step:** 3.1 — Render an array of games with `.map()` (next session)
+**Status:** ▶️ In progress
 
-> Resume here next time: you have one hardcoded `GameCards`. Next we make a
-> `SearchBar` whose text lives in state — your first taste of interactivity.
+> Resume here next time: you have a working stateful `SearchBar` (onChange +
+> onClick clear). Next we replace the single hardcoded `GameCards` with an array
+> of game data rendered via `.map()` — and learn why React needs `key`.
 
 ---
 
@@ -29,16 +30,26 @@
   - The **type** (`: GameCardsProps`) describes the props shape; **destructuring** (`{ title, genre }`) is what creates the usable variables — they're separate jobs.
   - Layout: `flex-col` to stack, `items-center` to center, `gap-4` to space children.
 
+- **Module 2 — State & Events (`useState`)** ✅
+  - `useState(initial)` returns `[value, setValue]`; the value is constant within a render.
+  - A setter doesn't mutate the variable — it asks React to **re-render**, and the next
+    render's `useState` hands back the new value. Every render has its own frozen state.
+  - **Controlled input**: `value={state}` + `onChange={e => setState(e.target.value)}`
+    makes React state the single source of truth for the field.
+  - `onChange` gives an event object (`e.target.value`); `onClick` often just calls the
+    setter directly (`onClick={() => setSearch("")}`).
+  - Arrow function in a handler delays the call to event time (not on render).
+
 ## ⏭️ Up next
-- **Module 2:** `useState` + events — a `SearchBar` whose text lives in state (first interactivity).
+- **Module 3:** arrays + `.map()` to render many `GameCards`; the `key` prop.
 
 ---
 
 ## 🗺️ Module checklist
 - [x] **0 — Setup & Tailwind**
 - [x] **1 — Components, JSX & Props**
-- [ ] **2 — State & Events (`useState`)**
-- [ ] 3 — Lists, Keys & Mock Data
+- [x] **2 — State & Events (`useState`)**
+- [ ] **3 — Lists, Keys & Mock Data**
 - [ ] 4 — Forms & "Add to Library"
 - [ ] 5 — Data Flow & Where State Lives
 - [ ] 6 — Side Effects & Persistence (`useEffect` + localStorage)

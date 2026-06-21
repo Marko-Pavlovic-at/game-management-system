@@ -3,13 +3,26 @@
 > I'm your coach. You write the code; I explain, give tasks, and review.
 > Full curriculum lives in the approved learning plan. This file tracks where you are.
 
-**Current module:** Module 3 — Lists, Keys & Mock Data
-**Current step:** 3.1 — Render an array of games with `.map()` (next session)
-**Status:** ▶️ In progress
+**Current module:** Module 4 — Forms & "Add to Library"
+**Current step:** 4.3 — connect the form to App (lifting state up)
+**Status:** ⏸️ Paused mid-step
 
-> Resume here next time: you have a working stateful `SearchBar` (onChange +
-> onClick clear). Next we replace the single hardcoded `GameCards` with an array
-> of game data rendered via `.map()` — and learn why React needs `key`.
+> COACHING NOTE: go slower. One concept per turn, and let the learner WRITE the
+> code — do not hand over finished blocks to paste. Session ended here because
+> the pace got overwhelming. Pick back up gently.
+
+> Where the code is now:
+> - `App.tsx`: `games` is now `useState` (was a const). An `addGame(newGame)`
+>   function exists and is passed to the form as `onAddGame={addGame}`. (There
+>   are still open TS issues: `newGame` is untyped, and new games need an `id` —
+>   NOT yet addressed. Leave for later, one thing at a time.)
+> - `addGameForm.tsx`: component `AddGameForm` with three controlled inputs
+>   (title/genre = string, rating = number via `Number(...)`) and a button.
+>   `handleSubmit(e)` builds `newGame` and `console.log`s it — this works.
+> - REMAINING for step 4.3: have the form accept the `onAddGame` prop
+>   (destructure it like `GameCards` does `title`) and CALL it in `handleSubmit`
+>   instead of console.log. Then, as separate later steps: type `newGame`, and
+>   generate an `id` when adding.
 
 ---
 
@@ -40,8 +53,14 @@
     setter directly (`onClick={() => setSearch("")}`).
   - Arrow function in a handler delays the call to event time (not on render).
 
+- **Module 3 — Lists, Keys & Mock Data** ✅
+  - Data lives as an array of objects in the parent (`App`), separate from the card UI.
+  - `.map()` turns that array into an array of `<GameCards>` elements.
+  - Each mapped element needs a stable `key` (use `game.id`, not the array index).
+  - `flex flex-wrap` on ONE container around the map lays cards out in a wrapping row.
+
 ## ⏭️ Up next
-- **Module 3:** arrays + `.map()` to render many `GameCards`; the `key` prop.
+- **Module 4:** a form to add a new game to the list (or first wire `SearchBar` to filter).
 
 ---
 
@@ -49,7 +68,7 @@
 - [x] **0 — Setup & Tailwind**
 - [x] **1 — Components, JSX & Props**
 - [x] **2 — State & Events (`useState`)**
-- [ ] **3 — Lists, Keys & Mock Data**
+- [x] **3 — Lists, Keys & Mock Data**
 - [ ] 4 — Forms & "Add to Library"
 - [ ] 5 — Data Flow & Where State Lives
 - [ ] 6 — Side Effects & Persistence (`useEffect` + localStorage)

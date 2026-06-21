@@ -1,5 +1,4 @@
 type GameCardsProps = {
-  id: number;
   title: string;
   genre: string;
   rating: number;

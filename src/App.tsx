@@ -1,18 +1,26 @@
 import SearchBar from "./components/SearchBar";
 import GameCards from "./components/GameCard";
+
+import { useState } from "react";
+import AddGameForm from "./components/addGameForm";
+
 function App() {
-  const games = [
+  const [games, setGames] = useState([
     { id: 1, title: "Wuthering Waves", genre: "Action RPG", rating: 10 },
     { id: 2, title: "Genshin Impact", genre: "Action RPG", rating: 7 },
     { id: 3, title: "Call of Duty", genre: "FPS", rating: 1 },
     { id: 4, title: "Hades", genre: "Roguelite", rating: 6 },
     { id: 5, title: "Pokemon Firered", genre: "RPG", rating: 4 },
-  ];
+  ]);
+  function addGame(newGame: { title: string; genre: string; rating: number }) {
+    setGames([...games, { ...newGame, id: Date.now() }]);
+  }
   return (
     <div className=" pt-10 flex flex-col items-center gap-4 min-h-screen bg-zinc-900">
       <h1 className="text-3xl font-bold text-indigo-400">
         Game Management System
       </h1>
+      <AddGameForm onAddGame={addGame}></AddGameForm>
       <SearchBar></SearchBar>
       <div className="flex flex-wrap justify-center gap-4">
         {games.map((game) => (

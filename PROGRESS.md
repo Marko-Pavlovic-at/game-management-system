@@ -9,17 +9,22 @@
 Tailwind, `main.tsx`, `index.css`). Wiped all old `src/components/*` and emptied
 `App.tsx` to a blank file. Old code still lives in git history if ever needed.
 
-**Current module:** Module 1 — Components & JSX (rebuilding from scratch)
-**Current step:** 1.1 — write the `App` component in the empty `App.tsx`
+**Current module:** Module 2 — State & Events (`useState`)
+**Current step:** 2.1 — first piece of state (a controlled search input)
 **Status:** Just starting
+
+Rebuilt so far (all written by the learner, unaided): `App` component, a
+`GameCard` component, props + a `GameCardProps` type, a `games` array rendered
+via `.map()` with unique `key`s, and basic Tailwind styling (understands the
+page / card-container / card-blueprint scope distinction).
 
 ---
 
 ## Module checklist
 - [x] 0 — Setup & Tailwind (machinery kept from previous attempt)
-- [ ] 1 — Components, JSX & Props
+- [x] 1 — Components, JSX & Props
 - [ ] 2 — State & Events (`useState`)
-- [ ] 3 — Lists, Keys & Mock Data
+- [x] 3 — Lists, Keys & Mock Data (done early, alongside Module 1)
 - [ ] 4 — Forms & "Add to Library"
 - [ ] 5 — Data Flow & Where State Lives
 - [ ] 6 — Side Effects & Persistence (`useEffect` + localStorage)

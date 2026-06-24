@@ -26,6 +26,12 @@ function App() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      <button
+        onClick={() => setSearch("")}
+        className="text-amber-200 bg-gray-500 p-3 rounded-2xl"
+      >
+        Clear
+      </button>
       <p className="text-amber-200">You Searched for: {search}</p>
       <div className="flex flex-wrap justify-center gap-10 items-center text-amber-100">
         {filteredGames.map((game) => (

@@ -10,9 +10,12 @@ Tailwind, `main.tsx`, `index.css`). Wiped all old `src/components/*` and emptied
 `App.tsx` to a blank file. Old code still lives in git history if ever needed.
 
 **Current module:** Module 2 — State & Events (`useState`)
-**Current step:** 2.2 — use the search state to filter the games list
-**Status:** 2.1 done — controlled search input working (state echoes to a `<p>`).
-Learner added an accessible `<label>` unprompted.
+**Current step:** 2.4 — empty state (message when no games match)
+**Status:** 2.3 done — "Clear" button calls `setSearch("")` via `onClick={() =>
+...}`. Learner understood the wrapper-fn vs immediate-call infinite-loop trap.
+
+Module 2 nearly complete: useState, controlled input, derived filtered list,
+event handlers (onChange + onClick). Strong, mostly-self-debugged progress.
 
 Rebuilt so far (all written by the learner, unaided): `App` component, a
 `GameCard` component, props + a `GameCardProps` type, a `games` array rendered

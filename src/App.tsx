@@ -32,6 +32,7 @@ function App() {
       >
         Clear
       </button>
+
       <p className="text-amber-200">You Searched for: {search}</p>
       <div className="flex flex-wrap justify-center gap-10 items-center text-amber-100">
         {filteredGames.map((game) => (
@@ -43,6 +44,9 @@ function App() {
           ></GameCard>
         ))}
       </div>
+      {filteredGames.length === 0 && (
+        <p className="text-amber-200">No games found</p>
+      )}
     </div>
   );
 }

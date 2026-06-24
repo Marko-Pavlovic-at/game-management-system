@@ -9,13 +9,26 @@
 Tailwind, `main.tsx`, `index.css`). Wiped all old `src/components/*` and emptied
 `App.tsx` to a blank file. Old code still lives in git history if ever needed.
 
-**Current module:** Module 2 — State & Events (`useState`)
-**Current step:** 2.4 — empty state (message when no games match)
-**Status:** 2.3 done — "Clear" button calls `setSearch("")` via `onClick={() =>
-...}`. Learner understood the wrapper-fn vs immediate-call infinite-loop trap.
+**Current module:** Module 2 — State & Events (`useState`) — COMPLETE
+**Current step:** Next session: start Module 4 — Forms & "Add to Library"
+**Status:** 2.4 done — empty-state message via `{cond && <p>}` conditional
+rendering working.
 
-Module 2 nearly complete: useState, controlled input, derived filtered list,
-event handlers (onChange + onClick). Strong, mostly-self-debugged progress.
+Module 2 complete: useState, controlled input, derived filtered list,
+event handlers (onChange + onClick), conditional rendering. Strong,
+mostly-self-debugged progress on the earlier steps.
+
+### WEAK AREAS — revisit before/while doing Module 4
+- **Conditional rendering (`{cond && <jsx>}`)**: got very overwhelmed. Core
+  confusions: (a) where the braces start/end — put the `}` after `&&` with the
+  JSX stranded outside; (b) `if` is a statement and can't live inside JSX `{}`.
+  What finally worked: strip ALL concept, have them render a plain always-on
+  `<p>` first (guaranteed win), THEN prepend the `cond &&`. Tiny mechanical
+  steps beat explanation here.
+- **Ternary (`cond ? a : b`)**: tried it, deleted it, never landed. Not yet
+  taught properly — introduce gently later, AFTER `&&` is solid.
+- General: when they say "I don't understand anything," I had over-explained.
+  Reset to one trivial typeable action, no theory. (See [[task-delivery-style]].)
 
 Rebuilt so far (all written by the learner, unaided): `App` component, a
 `GameCard` component, props + a `GameCardProps` type, a `games` array rendered
@@ -27,7 +40,7 @@ page / card-container / card-blueprint scope distinction).
 ## Module checklist
 - [x] 0 — Setup & Tailwind (machinery kept from previous attempt)
 - [x] 1 — Components, JSX & Props
-- [ ] 2 — State & Events (`useState`)
+- [x] 2 — State & Events (`useState`) — conditional rendering & ternary still weak
 - [x] 3 — Lists, Keys & Mock Data (done early, alongside Module 1)
 - [ ] 4 — Forms & "Add to Library"
 - [ ] 5 — Data Flow & Where State Lives

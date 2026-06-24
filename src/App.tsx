@@ -1,19 +1,34 @@
 import GameCard from "./components/GameCard";
-
+import { useState } from "react";
 function App() {
+  const [search, setSearch] = useState("");
   const games = [
     { id: 1, title: "Wuthering waves", genre: "Action RPG", rating: 10 },
     { id: 2, title: "Genshin Impact", genre: "Action RPG", rating: 7 },
     { id: 3, title: "Call of Duty", genre: "FPS", rating: 0 },
     { id: 4, title: "Hollow Knight", genre: "Metroidvania", rating: 6 },
   ];
+  const filteredGames = games.filter((game) =>
+    game.title.toLowerCase().includes(search.toLocaleLowerCase()),
+  );
 
   return (
-    <div className="bg-blue-950 min-h-screen flex flex-col gap-3 justify-center items-center ">
+    <div className="bg-blue-950 min-h-screen flex flex-col gap-3 p-5 items-center ">
       <h1 className="text-2xl text-amber-100">Game Management System</h1>
-
-      <div className="flex flex-wrap justify-center gap-4 text-amber-100">
-        {games.map((game) => (
+      <label className="text-amber-200" htmlFor="searchbar">
+        Search something
+      </label>
+      <input
+        className="text-amber-200 bg-blue-500"
+        type="text"
+        name="searchbar"
+        id="searchbar"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <p className="text-amber-200">You Searched for: {search}</p>
+      <div className="flex flex-wrap justify-center gap-10 items-center text-amber-100">
+        {filteredGames.map((game) => (
           <GameCard
             title={game.title}
             genre={game.genre}

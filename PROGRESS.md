@@ -10,8 +10,9 @@ Tailwind, `main.tsx`, `index.css`). Wiped all old `src/components/*` and emptied
 `App.tsx` to a blank file. Old code still lives in git history if ever needed.
 
 **Current module:** Module 2 — State & Events (`useState`)
-**Current step:** 2.1 — first piece of state (a controlled search input)
-**Status:** Just starting
+**Current step:** 2.2 — use the search state to filter the games list
+**Status:** 2.1 done — controlled search input working (state echoes to a `<p>`).
+Learner added an accessible `<label>` unprompted.
 
 Rebuilt so far (all written by the learner, unaided): `App` component, a
 `GameCard` component, props + a `GameCardProps` type, a `games` array rendered

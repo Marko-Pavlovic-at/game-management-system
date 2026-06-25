@@ -2,12 +2,14 @@ import GameCard from "./components/GameCard";
 import { useState } from "react";
 function App() {
   const [search, setSearch] = useState("");
-  const games = [
+  const [title, setTitle] = useState("");
+  const [games, setGames] = useState([
     { id: 1, title: "Wuthering waves", genre: "Action RPG", rating: 10 },
     { id: 2, title: "Genshin Impact", genre: "Action RPG", rating: 7 },
     { id: 3, title: "Call of Duty", genre: "FPS", rating: 0 },
     { id: 4, title: "Hollow Knight", genre: "Metroidvania", rating: 6 },
-  ];
+  ]);
+
   const filteredGames = games.filter((game) =>
     game.title.toLowerCase().includes(search.toLocaleLowerCase()),
   );
@@ -32,6 +34,30 @@ function App() {
       >
         Clear
       </button>
+      <label className="text-amber-200" htmlFor="game-title">
+        Add Game:
+      </label>
+      <input
+        className="text-amber-200 bg-blue-500"
+        type="text"
+        name="game-title"
+        id="game-title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <button
+        className="rounded-2xl bg-red-500 text-amber-200 p-2"
+        onClick={() => {
+          setGames([
+            ...games,
+            { id: Date.now(), title: title, genre: "", rating: 0 },
+          ]);
+          setTitle("");
+        }}
+      >
+        Add
+      </button>
+      <p className="text-amber-200">{title}</p>
 
       <p className="text-amber-200">You Searched for: {search}</p>
       <div className="flex flex-wrap justify-center gap-10 items-center text-amber-100">

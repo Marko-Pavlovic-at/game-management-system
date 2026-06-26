@@ -9,10 +9,57 @@
 Tailwind, `main.tsx`, `index.css`). Wiped all old `src/components/*` and emptied
 `App.tsx` to a blank file. Old code still lives in git history if ever needed.
 
-**Current module:** Module 2 — State & Events (`useState`) — COMPLETE
-**Current step:** Next session: start Module 4 — Forms & "Add to Library"
-**Status:** 2.4 done — empty-state message via `{cond && <p>}` conditional
-rendering working.
+**Current module:** Module 5 — Lifting state up / callback props (extraction in progress)
+**Current step:** Finish wiring `<GameForm />`. TWO small mechanical edits left
+in `GameForm.tsx`, then delete the old inline form from `App`. Do NOT re-explain
+the concept — the thinking is already done and correct. Resume at the keystroke
+level, one action, no theory (see blank-out note below).
+**Status:** Extraction ~80% done and the HARD parts are CORRECT:
+- `GameForm.tsx`: props type `onAddGame: (t: string) => void;` — written correctly
+  by the learner unaided (they thought they'd failed; they hadn't). Has local
+  `title`/`setTitle` + controlled input.
+- `App.tsx`: `handleAddGame(newTitle)` written correctly; passed down as
+  `<GameForm onAddGame={handleAddGame} />` (function ref, no parens — correct).
+REMAINING (all tiny, no new concepts):
+  1. `GameForm` line 7 `function GameForm()` still has EMPTY parens — needs to
+     receive the prop: `({ onAddGame }: GameFormProps)` (template = GameCard's params).
+  2. `GameForm` needs an Add `<button type="button">` whose onClick calls
+     `onAddGame(title)` then `setTitle("")`. Only genuinely new token: `onAddGame(title)`.
+  3. `App` `handleAddGame(newTitle)` may need `: string` annotation (implicit any).
+  4. THEN delete the old inline title input + Add button + `title`/`setTitle` from `App`.
+
+### Module 5 session notes (2026-06-26) — BLANK-OUT, second time same spot
+- Learner hit the SAME wall as the prior attempt: the GameForm extraction /
+  callback-prop step overwhelmed them and they shut down ("blanking out again,
+  I want to stop"). This is now a confirmed pattern, not a one-off.
+- ROOT CAUSE (my error): I stacked too much per turn — TS function-type syntax +
+  receiving props + new button + onClick logic, across two files, with "why"
+  explanations. Even after they got stuck I handed them a 2-edit step. Too big.
+- What they actually did well, ALONE: the function-type `(t: string) => void`
+  (the thing they explicitly said they couldn't do), the handler, passing the
+  callback. The hard cognitive work is done. Only mechanical wiring remains.
+- FOR NEXT TIME: open by SHOWING them it already works ("the TS is right, you're
+  80% done"), then ONE keystroke-level action, zero theory, then stop and check.
+  Never list two edits at once when they're near the wall. Guaranteed-win first.
+- Function-type TS syntax IS genuinely hard for them — when it recurs, teach by
+  pattern-copy from a file they already wrote, not by explaining the grammar.
+
+### Module 4 session notes (2026-06-25)
+- Immutable array update (`[...games, {new}]`) landed FIRST TRY — strong. This
+  is usually the hard part; it wasn't for them.
+- Self-caught that TS forced genre/rating to be filled (type inferred from the
+  initial array). Good instinct.
+- Forgot `value={title}` on first pass (had only onChange) — half-controlled
+  input. Worth watching: they don't yet fully internalize that controlled =
+  value + onChange BOTH.
+- Block-arrow conversion (single-expr `=>` to `=> { ...; ...; }`) went fine.
+- Still owe them: shorthand `{ title }` vs `{ title: title }` (mentioned, not
+  drilled). genre/rating still hardcoded "" / 0 — real inputs come with the
+  GameForm refactor.
+- ARCHITECTURE MOMENT: learner proactively wanted to extract a form component
+  before building it (anti-clutter instinct, good). I steered: build inline
+  first, THEN extract, so lifting-state-up isn't tangled with form mechanics.
+  They agreed. Honor this next session — start the extraction.
 
 Module 2 complete: useState, controlled input, derived filtered list,
 event handlers (onChange + onClick), conditional rendering. Strong,
@@ -42,7 +89,8 @@ page / card-container / card-blueprint scope distinction).
 - [x] 1 — Components, JSX & Props
 - [x] 2 — State & Events (`useState`) — conditional rendering & ternary still weak
 - [x] 3 — Lists, Keys & Mock Data (done early, alongside Module 1)
-- [ ] 4 — Forms & "Add to Library"
+- [~] 4 — Forms & "Add to Library" (core add-to-list working inline; component
+      extraction + genre/rating inputs still to do)
 - [ ] 5 — Data Flow & Where State Lives
 - [ ] 6 — Side Effects & Persistence (`useEffect` + localStorage)
 - [ ] 7 — Custom Hooks

@@ -1,4 +1,5 @@
 import GameCard from "./components/GameCard";
+import GameForm from "./components/GameForm";
 import { useState } from "react";
 function App() {
   const [search, setSearch] = useState("");
@@ -9,7 +10,12 @@ function App() {
     { id: 3, title: "Call of Duty", genre: "FPS", rating: 0 },
     { id: 4, title: "Hollow Knight", genre: "Metroidvania", rating: 6 },
   ]);
-
+  function handleAddGame(newTitle) {
+    setGames([
+      ...games,
+      { id: Date.now(), title: newTitle, genre: "", rating: 0 },
+    ]);
+  }
   const filteredGames = games.filter((game) =>
     game.title.toLowerCase().includes(search.toLocaleLowerCase()),
   );
@@ -17,6 +23,7 @@ function App() {
   return (
     <div className="bg-blue-950 min-h-screen flex flex-col gap-3 p-5 items-center ">
       <h1 className="text-2xl text-amber-100">Game Management System</h1>
+      <GameForm onAddGame={handleAddGame}></GameForm>
       <label className="text-amber-200" htmlFor="searchbar">
         Search something
       </label>
